@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>projectAlamo — Technology for everyday problems</title>
+  <meta name="description" content="projectAlamo is an Australian technology company building practical apps that solve everyday problems. Makers of Madzie, Forkenspoon and Farenwide.">
+  <meta name="theme-color" content="#1f1e1c">
+  <link rel="canonical" href="https://www.projectalamo.com.au/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="projectAlamo — Technology for everyday problems">
+  <meta property="og:description" content="Practical technology that solves everyday problems. Makers of Madzie, Forkenspoon and Farenwide.">
+  <meta property="og:url" content="https://www.projectalamo.com.au/">
+  <meta property="og:image" content="https://www.projectalamo.com.au/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette sampled from the projectAlamo logo */
+      --ink: #1f1e1c;          /* deepest charcoal (logo corners) */
+      --charcoal: #2b2a27;     /* panel */
+      --slate: #3a3936;        /* logo field */
+      --line: #4a4843;
+      --parchment: #ece4d3;    /* wordmark cream */
+      --moon: #d6c6aa;         /* moon disc */
+      --muted: #a9a294;
+      --red: #c22821;          /* "Alamo" red */
+      --red-bright: #e0392f;
+      --maxw: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--parchment);
+      font: 400 17px/1.65 Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* Grain overlay echoing the logo's printed texture */
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wordmark { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; letter-spacing: -.01em; }
+    .wordmark .a { color: var(--red); }
+    .eyebrow {
+      font: 500 12px/1 "IBM Plex Mono", ui-monospace, monospace;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--red-bright);
+      display: inline-flex; align-items: center; gap: 12px;
+    }
+    .eyebrow::before { content: ""; width: 2px; height: 18px; background: var(--red); }
+    h1, h2, h3 { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; line-height: 1.1; margin: 0; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(31,30,28,.85); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(74,72,67,.6);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav .wordmark { font-size: 26px; text-decoration: none; }
+    .nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
+    .nav ul a { text-decoration: none; font-size: 15px; color: var(--muted); transition: color .2s; }
+    .nav ul a:hover { color: var(--parchment); }
+
+    /* Hero */
+    .hero {
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 70% 45%, #3c3a36 0%, var(--charcoal) 45%, var(--ink) 85%);
+      padding: 88px 0 104px;
+    }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(42px, 6vw, 72px); margin: 22px 0 22px; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero p.lead { font-size: 19px; color: #cfc7b6; max-width: 34ch; margin: 0 0 34px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+      padding: 14px 24px; border-radius: 4px; font-weight: 600; font-size: 15px;
+      transition: transform .15s, background .2s, border-color .2s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-primary:hover { background: var(--red-bright); }
+    .btn-ghost { border: 1px solid var(--line); color: var(--parchment); }
+    .btn-ghost:hover { border-color: var(--parchment); }
+    .hero-logo { position: relative; }
+    .hero-logo img {
+      width: 100%; max-width: 460px; margin-left: auto; border-radius: 50%;
+      -webkit-mask-image: radial-gradient(circle, #000 58%, transparent 71%);
+              mask-image: radial-gradient(circle, #000 58%, transparent 71%);
+    }
+
+    section { padding: 104px 0; }
+    .section-head { max-width: 640px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(32px, 4vw, 46px); margin: 18px 0 16px; }
+    .section-head p { color: var(--muted); margin: 0; }
+
+    /* About */
+    .about { background: var(--ink); border-top: 1px solid #2a2926; }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .pillar { background: var(--ink); padding: 34px 30px 38px; }
+    .pillar .num { font: 500 13px "IBM Plex Mono", monospace; color: var(--red-bright); }
+    .pillar h3 { font-size: 23px; margin: 14px 0 10px; }
+    .pillar p { margin: 0; color: var(--muted); font-size: 16px; }
+
+    /* Products */
+    .products { background: linear-gradient(180deg, var(--charcoal), var(--ink)); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card {
+      position: relative; display: flex; flex-direction: column;
+      background: var(--slate); border: 1px solid var(--line); border-radius: 6px;
+      padding: 30px 28px 28px; text-decoration: none;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); border-color: var(--moon); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+    .card::before { content: ""; position: absolute; left: 28px; top: 0; width: 44px; height: 3px; background: var(--red); }
+    .status {
+      align-self: flex-start; font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase;
+      padding: 7px 10px; border-radius: 3px; background: rgba(214,198,170,.14); color: var(--moon);
+    }
+    .status.soon { background: rgba(194,40,33,.18); color: #ff8a80; }
+    .card .cat { margin: 22px 0 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .card h3 { font-size: 32px; }
+    .card p { color: #cfc7b6; font-size: 16px; margin: 12px 0 26px; flex: 1; }
+    .card .link { font-weight: 600; font-size: 15px; color: var(--parchment); display: inline-flex; gap: 8px; align-items: center; }
+    .card .link span { color: var(--red-bright); transition: transform .2s; }
+    .card:hover .link span { transform: translateX(4px); }
+
+    /* Roadmap */
+    .roadmap { background: var(--ink); }
+    .track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .track::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red) 0 33%, var(--line) 33%); }
+    .step { position: relative; padding-top: 42px; }
+    .step::before { content: ""; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 2px solid var(--line); }
+    .step.now::before { background: var(--red); border-color: var(--red); box-shadow: 0 0 0 6px rgba(194,40,33,.2); }
+    .step .when { font: 500 12px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .step.now .when { color: var(--red-bright); }
+    .step h3 { font-size: 25px; margin: 10px 0 10px; }
+    .step p { margin: 0; color: var(--muted); font-size: 16px; }
+
+    /* Contact */
+    .contact { background: radial-gradient(ellipse at 50% 120%, #3c3a36, var(--ink) 70%); text-align: center; border-top: 1px solid #2a2926; }
+    .contact h2 { font-size: clamp(34px, 4.6vw, 52px); margin: 18px auto 18px; max-width: 18ch; }
+    .contact p { color: var(--muted); max-width: 52ch; margin: 0 auto 34px; }
+    .contact .btns { justify-content: center; }
+
+    footer { border-top: 1px solid #2a2926; padding: 32px 0; color: var(--muted); font-size: 14px; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+    footer .wordmark { font-size: 20px; color: var(--parchment); }
+    footer nav { display: flex; gap: 22px; }
+    footer nav a { text-decoration: none; }
+    footer nav a:hover { color: var(--parchment); }
+
+    @media (max-width: 900px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero-logo { order: -1; }
+      .hero-logo img { max-width: 300px; margin: 0 auto; }
+      .hero { padding: 48px 0 80px; text-align: center; }
+      .hero p.lead { margin-left: auto; margin-right: auto; }
+      .hero .btns { justify-content: center; }
+      .pillars, .cards, .track { grid-template-columns: 1fr; }
+      .track::before { top: 0; bottom: 0; left: 9px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, var(--red) 0 33%, var(--line) 33%); }
+      .step { padding: 0 0 0 44px; }
+      section { padding: 76px 0; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px; }
+      .nav ul { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="wordmark" aria-label="projectAlamo home">project<span class="a">Alamo</span></a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#future">What's next</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Australian technology studio</span>
+          <h1 id="hero-title">Technology that solves <em>everyday</em> problems.</h1>
+          <p class="lead">We design and build simple, dependable apps that make ordinary parts of life a little easier.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#products">See our products</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-logo">
+          <img src="assets/logo.jpg" width="720" height="720" alt="projectAlamo logo: a fortress silhouette against a pale moon inside a hand-drawn target">
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">About us</span>
+          <h2 id="about-title">Small problems, solved well.</h2>
+          <p>projectAlamo builds technology around the moments people deal with every day: how they feel, what they cook, where they go. We start with a real problem, keep the solution simple, and stand behind what we ship.</p>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="num">01</div>
+            <h3>Grounded in real life</h3>
+            <p>Every product begins with an everyday frustration we've felt ourselves, not a feature list.</p>
+          </div>
+          <div class="pillar">
+            <div class="num">02</div>
+            <h3>Simple by design</h3>
+            <p>Clear, focused tools that are easy to pick up and easy to keep using.</p>
+          </div>
+          <div class="pillar">
+            <div class="num">03</div>
+            <h3>Built to last</h3>
+            <p>We hold our ground on quality, privacy and reliability, and keep improving after launch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="products" aria-labelledby="products-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Our products</span>
+          <h2 id="products-title">Two apps live, one on the way.</h2>
+          <p>Each projectAlamo product tackles a different part of everyday life.</p>
+        </div>
+        <div class="cards">
+          <a class="card" href="https://www.madzie.com.au" target="_blank" rel="noopener">
+            <span class="status">Available now</span>
+            <div class="cat">Wellbeing</div>
+            <h3>Madzie</h3>
+            <p>A journaling app for reflection and emotional clarity. Capture your thoughts, notice patterns and ease everyday stress.</p>
+            <span class="link">madzie.com.au <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="card" href="https://www.forkenspoon.com" target="_blank" rel="noopener">
+            <span class="status">Available now</span>
+            <div class="cat">Food &amp; family</div>
+            <h3>Forkenspoon</h3>
+            <p>A community of home cooks sharing recipes and planning weekly meals and grocery lists together. Dinner, decided.</p>
+            <span class="link">forkenspoon.com <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="card" href="https://www.farenwide.com" target="_blank" rel="noopener">
+            <span class="status soon">Coming soon</span>
+            <div class="cat">Travel</div>
+            <h3>Farenwide</h3>
+            <p>Plan each day of your trip, journal along the way, and relive the journey on a map, solo or with friends.</p>
+            <span class="link">farenwide.com <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap" id="future" aria-labelledby="future-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What's next</span>
+          <h2 id="future-title">Mobile first. Not mobile only.</h2>
+          <p>Our products are mobile apps today. We're expanding into AI-powered solutions and broader technology services, bringing the same practical approach to new problems.</p>
+        </div>
+        <div class="track">
+          <div class="step now">
+            <div class="when">Today</div>
+            <h3>Mobile apps</h3>
+            <p>Consumer apps for iOS and Android that help people with everyday tasks.</p>
+          </div>
+          <div class="step">
+            <div class="when">Next</div>
+            <h3>AI solutions</h3>
+            <p>Intelligent tools that take the busywork out of everyday decisions.</p>
+          </div>
+          <div class="step">
+            <div class="when">Beyond</div>
+            <h3>Technology services</h3>
+            <p>Helping others turn their own everyday problems into working products.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <span class="eyebrow">Contact</span>
+        <h2 id="contact-title">Have a problem worth solving?</h2>
+        <p>Whether it's a question about one of our apps, a partnership idea or a project of your own, we'd love to hear from you.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="mailto:hello@projectalamo.com.au">hello@projectalamo.com.au</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span class="wordmark">project<span class="a">Alamo</span></span>
+      <nav aria-label="Products">
+        <a href="https://www.madzie.com.au" target="_blank" rel="noopener">Madzie</a>
+        <a href="https://www.forkenspoon.com" target="_blank" rel="noopener">Forkenspoon</a>
+        <a href="https://www.farenwide.com" target="_blank" rel="noopener">Farenwide</a>
+      </nav>
+      <span>&copy; <span id="yr">2026</span> projectAlamo. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
