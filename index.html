@@ -100,9 +100,9 @@
     .hero-logo { position: relative; }
     .hero-logo img {
       width: 100%; max-width: 460px; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
-      margin-left: auto; border-radius: 50%;
-      -webkit-mask-image: radial-gradient(circle closest-side, #000 88%, transparent 100%);
-              mask-image: radial-gradient(circle closest-side, #000 88%, transparent 100%);
+      margin-left: auto;
+      /* Logo sits on near-black; lighten drops that square into the hero background */
+      mix-blend-mode: lighten;
     }
 
     section { padding: 104px 0; }
@@ -213,7 +213,7 @@
           </div>
         </div>
         <div class="hero-logo">
-          <img src="assets/logo.jpg" width="1024" height="1024" alt="projectAlamo logo: a fortress silhouette against a pale moon inside a hand-drawn target">
+          <img src="assets/logo.jpg" width="1024" height="1024" alt="projectAlamo logo: a fortress silhouette with a tattered flag against a full moon, ringed in red and cream">
         </div>
       </div>
     </section>
