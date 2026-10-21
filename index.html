@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>projectAlamo — Technology for everyday problems</title>
   <meta name="description" content="projectAlamo builds practical technology that solves everyday problems. Makers of Madzie, Forkenspoon and Farenwide.">
-  <meta name="theme-color" content="#1f1e1c">
+  <meta name="theme-color" content="#1d4779">
   <link rel="canonical" href="https://www.projectalamo.com.au/">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -19,28 +19,33 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Palette sampled from the projectAlamo logo */
-      --ink: #1f1e1c;          /* deepest charcoal (logo corners) */
-      --charcoal: #2b2a27;     /* panel */
-      --slate: #3a3936;        /* logo field */
-      --line: #4a4843;
-      --parchment: #ece4d3;    /* wordmark cream */
-      --moon: #d6c6aa;         /* moon disc */
-      --muted: #a9a294;
-      --red: #c22821;          /* "Alamo" red */
-      --red-bright: #e0392f;
+      /* Palette from the projectAlamo logo */
+      --bg: #f7f8fa;           /* logo background */
+      --surface: #ffffff;
+      --tint: #eef2f8;         /* faint navy wash */
+      --navy: #1d4779;         /* fortress */
+      --navy-deep: #112a4e;    /* headings */
+      --blue: #205189;         /* "project" */
+      --sky: #5b86c4;          /* circuit lines */
+      --red: #bc251c;          /* "Alamo" */
+      --red-bright: #d6392c;
+      --coral: #ee8a6a;        /* end of the arc */
+      --text: #1b2b40;
+      --muted: #5a6b80;
+      --line: #dde3ec;
+      --arc: linear-gradient(90deg, var(--red) 0%, #e05a3a 55%, var(--coral) 100%);
       --maxw: 1120px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--ink);
-      color: var(--parchment);
+      background: var(--bg);
+      color: var(--text);
       font: 400 17px/1.65 Inter, system-ui, -apple-system, Segoe UI, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
@@ -48,61 +53,54 @@
     img { max-width: 100%; display: block; }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-    /* Grain overlay echoing the logo's printed texture */
-    body::before {
-      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .06;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    .wordmark { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; letter-spacing: -.01em; }
+    .wordmark { font-family: Outfit, Inter, sans-serif; font-weight: 600; letter-spacing: -.01em; color: var(--blue); }
     .wordmark .a { color: var(--red); }
     .eyebrow {
       font: 500 12px/1 "IBM Plex Mono", ui-monospace, monospace;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--red-bright);
+      letter-spacing: .18em; text-transform: uppercase; color: var(--red);
       display: inline-flex; align-items: center; gap: 12px;
     }
-    .eyebrow::before { content: ""; width: 2px; height: 18px; background: var(--red); }
-    h1, h2, h3 { font-family: "Zilla Slab", Georgia, serif; font-weight: 700; line-height: 1.1; margin: 0; }
+    .eyebrow::before { content: ""; width: 22px; height: 3px; border-radius: 2px; background: var(--arc); }
+    h1, h2, h3 { font-family: Outfit, Inter, sans-serif; font-weight: 700; line-height: 1.1; margin: 0; color: var(--navy-deep); letter-spacing: -.01em; }
 
     /* Header */
     header {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(31,30,28,.85); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(74,72,67,.6);
+      background: rgba(255,255,255,.88); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .nav .wordmark { font-size: 26px; text-decoration: none; }
+    .nav .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav .brand img { width: 36px; height: 36px; border-radius: 8px; }
+    .nav .wordmark { font-size: 24px; }
     .nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
     .nav ul a { text-decoration: none; font-size: 15px; color: var(--muted); transition: color .2s; }
-    .nav ul a:hover { color: var(--parchment); }
+    .nav ul a:hover { color: var(--navy); }
 
     /* Hero */
     .hero {
       position: relative; overflow: hidden;
-      background: radial-gradient(ellipse at 70% 45%, #3c3a36 0%, var(--charcoal) 45%, var(--ink) 85%);
-      padding: 88px 0 104px;
+      background: radial-gradient(ellipse at 75% 40%, #ffffff 0%, var(--bg) 55%, var(--tint) 100%);
+      padding: 80px 0 96px;
     }
     .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-    .hero h1 { font-size: clamp(42px, 6vw, 72px); margin: 0 0 22px; }
-    .hero h1 em { font-style: normal; color: var(--red); }
-    .hero p.lead { font-size: 19px; color: #cfc7b6; max-width: 34ch; margin: 0 0 34px; }
+    .hero h1 { font-size: clamp(42px, 6vw, 70px); margin: 0 0 22px; }
+    .hero h1 em { font-style: normal; background: var(--arc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.lead { font-size: 19px; color: var(--muted); max-width: 34ch; margin: 0 0 34px; }
     .btns { display: flex; flex-wrap: wrap; gap: 14px; }
     .btn {
       display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-      padding: 14px 24px; border-radius: 4px; font-weight: 600; font-size: 15px;
-      transition: transform .15s, background .2s, border-color .2s;
+      padding: 14px 24px; border-radius: 999px; font-weight: 600; font-size: 15px;
+      transition: transform .15s, background .2s, border-color .2s, box-shadow .2s;
     }
     .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--red); color: #fff; }
-    .btn-primary:hover { background: var(--red-bright); }
-    .btn-ghost { border: 1px solid var(--line); color: var(--parchment); }
-    .btn-ghost:hover { border-color: var(--parchment); }
-    .hero-logo { position: relative; }
+    .btn-primary { background: var(--navy); color: #fff; box-shadow: 0 8px 20px rgba(29,71,121,.25); }
+    .btn-primary:hover { background: var(--blue); }
+    .btn-ghost { border: 1px solid var(--line); background: var(--surface); color: var(--navy); }
+    .btn-ghost:hover { border-color: var(--sky); }
     .hero-logo img {
       width: 100%; max-width: 460px; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
       margin-left: auto;
-      /* Logo sits on near-black; lighten drops that square into the hero background */
-      mix-blend-mode: lighten;
     }
 
     section { padding: 104px 0; }
@@ -111,66 +109,70 @@
     .section-head p { color: var(--muted); margin: 0; }
 
     /* About */
-    .about { background: var(--ink); border-top: 1px solid #2a2926; }
-    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-    .pillar { background: var(--ink); padding: 34px 30px 38px; }
-    .pillar .num { font: 500 13px "IBM Plex Mono", monospace; color: var(--red-bright); }
+    .about { background: var(--surface); border-top: 1px solid var(--line); }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pillar { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 30px 28px 34px; }
+    .pillar .num { font: 500 13px "IBM Plex Mono", monospace; color: var(--sky); }
     .pillar h3 { font-size: 23px; margin: 14px 0 10px; }
     .pillar p { margin: 0; color: var(--muted); font-size: 16px; }
 
     /* Products */
-    .products { background: linear-gradient(180deg, var(--charcoal), var(--ink)); }
+    .products { background: var(--bg); }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .card {
-      position: relative; display: flex; flex-direction: column;
-      background: var(--slate); border: 1px solid var(--line); border-radius: 6px;
+      position: relative; display: flex; flex-direction: column; overflow: hidden;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
       padding: 30px 28px 28px; text-decoration: none;
       transition: transform .2s, border-color .2s, box-shadow .2s;
     }
-    .card:hover { transform: translateY(-4px); border-color: var(--moon); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
-    .card::before { content: ""; position: absolute; left: 28px; top: 0; width: 44px; height: 3px; background: var(--red); }
+    .card:hover { transform: translateY(-4px); border-color: var(--sky); box-shadow: 0 18px 40px rgba(17,42,78,.12); }
+    .card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--arc); }
     .status {
       align-self: flex-start; font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase;
-      padding: 7px 10px; border-radius: 3px; background: rgba(214,198,170,.14); color: var(--moon);
+      padding: 7px 10px; border-radius: 999px; background: rgba(29,71,121,.08); color: var(--navy);
     }
-    .status.soon { background: rgba(194,40,33,.18); color: #ff8a80; }
+    .status.soon { background: rgba(188,37,28,.09); color: var(--red); }
     .card .cat { margin: 22px 0 4px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
     .card h3 { font-size: 32px; }
-    .card p { color: #cfc7b6; font-size: 16px; margin: 12px 0 26px; flex: 1; }
-    .card .link { font-weight: 600; font-size: 15px; color: var(--parchment); display: inline-flex; gap: 8px; align-items: center; }
-    .card .link span { color: var(--red-bright); transition: transform .2s; }
+    .card p { color: var(--muted); font-size: 16px; margin: 12px 0 26px; flex: 1; }
+    .card .link { font-weight: 600; font-size: 15px; color: var(--navy); display: inline-flex; gap: 8px; align-items: center; }
+    .card .link span { color: var(--red); transition: transform .2s; }
     .card:hover .link span { transform: translateX(4px); }
 
     /* Roadmap */
-    .roadmap { background: var(--ink); }
+    .roadmap { background: var(--surface); border-top: 1px solid var(--line); }
     .track { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
     .track::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red) 0 33%, var(--line) 33%); }
     .step { position: relative; padding-top: 42px; }
-    .step::before { content: ""; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 2px solid var(--line); }
-    .step.now::before { background: var(--red); border-color: var(--red); box-shadow: 0 0 0 6px rgba(194,40,33,.2); }
+    .step::before { content: ""; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--surface); border: 2px solid var(--sky); }
+    .step.now::before { background: var(--red); border-color: var(--red); box-shadow: 0 0 0 6px rgba(188,37,28,.15); }
     .step .when { font: 500 12px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-    .step.now .when { color: var(--red-bright); }
+    .step.now .when { color: var(--red); }
     .step h3 { font-size: 25px; margin: 10px 0 10px; }
     .step p { margin: 0; color: var(--muted); font-size: 16px; }
 
     /* Contact */
-    .contact { background: radial-gradient(ellipse at 50% 120%, #3c3a36, var(--ink) 70%); text-align: center; border-top: 1px solid #2a2926; }
-    .contact h2 { font-size: clamp(34px, 4.6vw, 52px); margin: 18px auto 18px; max-width: 18ch; }
-    .contact p { color: var(--muted); max-width: 52ch; margin: 0 auto 34px; }
+    .contact { background: linear-gradient(160deg, var(--navy-deep), var(--navy)); text-align: center; color: #fff; }
+    .contact h2 { font-size: clamp(34px, 4.6vw, 52px); margin: 18px auto 18px; max-width: 18ch; color: #fff; }
+    .contact p { color: #c9d6ea; max-width: 52ch; margin: 0 auto 34px; }
+    .contact .eyebrow { color: var(--coral); }
     .contact .btns { justify-content: center; }
+    .contact .btn-primary { background: #fff; color: var(--navy); box-shadow: none; }
+    .contact .btn-primary:hover { background: #f2f5fa; }
 
-    footer { border-top: 1px solid #2a2926; padding: 32px 0; color: var(--muted); font-size: 14px; }
+    footer { background: var(--navy-deep); border-top: 1px solid rgba(255,255,255,.08); padding: 32px 0; color: #9fb1cb; font-size: 14px; }
     footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
-    footer .wordmark { font-size: 20px; color: var(--parchment); }
+    footer .wordmark { font-size: 20px; color: #fff; }
+    footer .wordmark .a { color: var(--coral); }
     footer nav { display: flex; gap: 22px; }
     footer nav a { text-decoration: none; }
-    footer nav a:hover { color: var(--parchment); }
+    footer nav a:hover { color: #fff; }
 
     @media (max-width: 900px) {
       .hero .wrap { grid-template-columns: 1fr; }
       .hero-logo { order: -1; }
       .hero-logo img { max-width: 300px; margin: 0 auto; }
-      .hero { padding: 48px 0 80px; text-align: center; }
+      .hero { padding: 40px 0 72px; text-align: center; }
       .hero p.lead { margin-left: auto; margin-right: auto; }
       .hero .btns { justify-content: center; }
       .pillars, .cards, .track { grid-template-columns: 1fr; }
@@ -189,7 +191,7 @@
 
   <header>
     <div class="wrap nav">
-      <a href="#top" class="wordmark" aria-label="projectAlamo home">project<span class="a">Alamo</span></a>
+      <a href="#top" class="brand" aria-label="projectAlamo home"><img src="assets/icon-512.png" alt="" width="36" height="36"><span class="wordmark">project<span class="a">Alamo</span></span></a>
       <nav aria-label="Main">
         <ul>
           <li><a href="#about">About</a></li>
@@ -213,7 +215,7 @@
           </div>
         </div>
         <div class="hero-logo">
-          <img src="assets/logo.jpg" width="1024" height="1024" alt="projectAlamo logo: a fortress silhouette with a tattered flag against a full moon, ringed in red and cream">
+          <img src="assets/logo.png" width="1024" height="1024" alt="projectAlamo logo: a navy fortress with a flag and circuit lines, under a red-to-coral arc">
         </div>
       </div>
     </section>

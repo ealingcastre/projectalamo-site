@@ -31,3 +31,15 @@ Optional but recommended: verify the domain under your GitHub account (Settings 
 ## Editing
 - Contact email: search `hello@projectalamo.com.au` in `index.html`.
 - Product cards: the `<a class="card">` blocks in the Products section. When Farenwide launches, change `Coming soon` to `Available now` and remove the `soon` class.
+
+## Brand
+Colours (CSS variables at the top of `index.html`), sampled from the logo:
+navy `#1D4779` (fortress), deep navy `#112A4E` (headings), blue `#205189`
+("project"), sky `#5B86C4` (circuit lines), red `#BC251C` ("Alamo"), and the
+arc's red-to-coral gradient (`#BC251C` → `#EE8A6A`) used for accents.
+Background `#F7F8FA`. Headings in Outfit, body in Inter.
+
+`assets/logo.png` is the logo on a transparent background, for light
+backgrounds only (the white "A" is see-through). Icons (`favicon.png`,
+`assets/apple-touch-icon.png`, `assets/icon-512.png`) are the emblem without
+the wordmark.
